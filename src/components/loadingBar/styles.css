@@ -1,0 +1,11 @@
+.loadingBarContainer {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 25vh;
+  left: 25VW;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

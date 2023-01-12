@@ -1,0 +1,84 @@
+.colorbxFixedContainer {
+  position: fixed;
+  left: 0px;
+  bottom: 5vh;
+  width: 100%;
+  display: flex;
+  border: 1px solid lightgrey;
+}
+
+.colorLeftContainer {
+  flex: 1 1 0%;
+  border-right: 1px solid lightgrey;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modelCatContainer {
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cateName {
+  padding: 0px 10px;
+  cursor: pointer;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.colorRightContainer {
+  flex: 3.7 1 0%;
+  border-right: 1px solid lightgrey;
+  padding: 20px;
+  position: relative;
+}
+
+.colorContainer {
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
+  width: calc(78vw - 40px);
+  padding-top: 10px;
+  scroll-behavior: smooth;
+}
+
+.colorbox {
+  min-width: 60px;
+  height: 60px;
+  cursor: pointer;
+  flex: 1 1 0%;
+  position: relative;
+  transition: all 0.2s ease 0s;
+}
+
+.colorboxSoleContainer {
+  flex: 1 1 0%;
+}
+
+.colorboxSoleTop {
+  min-width: 30px;
+  height: 30px;
+  cursor: pointer;
+  flex: 1 1 0%;
+  position: relative;
+  transition: all 0.2s ease 0s;
+}
+.colorboxSoleBottom {
+  min-width: 30px;
+  height: 30px;
+  cursor: pointer;
+  flex: 1 1 0%;
+  position: relative;
+  transition: all 0.2s ease 0s;
+}
+
+@media (max-width: 767px) {
+  .colorbxFixedContainer {
+    display: none;
+  }
+}
