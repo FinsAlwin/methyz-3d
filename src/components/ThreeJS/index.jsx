@@ -33,6 +33,7 @@ const ThreeJs = (props) => {
         handleActivePart={handleActivePart}
         data={props.data}
         isObjectLoaded={props.handleObjectLoaded}
+        model={props.model}
       />
     </Canvas>
   );

@@ -12,8 +12,8 @@ const ThemeRoutes = [
     path: "/",
     element: <PublicLayout />,
     children: [
-      { path: "/", element: <Navigate to="/101" /> },
-      { path: "/:product_id", exact: true, element: <Starter /> },
+      // { path: "/", element: <Navigate to="/" /> },
+      { path: "/", exact: true, element: <Starter /> },
     ],
   },
 ];

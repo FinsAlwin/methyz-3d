@@ -1,0 +1,38 @@
+.colorPickerContainer {
+  width: 100%;
+  background-color: #282828;
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.colorPickerContainer ul {
+  list-style: none;
+}
+
+.usercolors {
+  display: block;
+  margin: 0px;
+  padding: 10px 0px;
+}
+
+.usercolors li {
+  display: flex;
+  height: 20px;
+  position: relative;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #666;
+  justify-content: space-between;
+}
+
+.colorBox {
+  width: 30px;
+  height: 20px;
+
+  border: 2px solid #d8d8d8;
+}

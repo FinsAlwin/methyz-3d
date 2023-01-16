@@ -5,11 +5,7 @@ const CatItem = (props) => {
 
   return (
     <>
-      <span
-        className="cateName"
-        onClick={handleClick}
-        style={{ textDecoration: `${props.isActive ? "underline" : "none"}` }}
-      >
+      <span className="cateName" onClick={handleClick}>
         {props.title}
       </span>
     </>

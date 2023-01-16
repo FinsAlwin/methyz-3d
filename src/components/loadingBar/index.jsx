@@ -2,10 +2,10 @@ import "./styles.css";
 
 import { ThreeDots } from "react-loader-spinner";
 
-const LoadingBar = () => {
+const LoadingBar = (props) => {
   return (
     <div className="loadingBarContainer">
-      <ThreeDots
+      <props.loading
         height="80"
         width="80"
         radius="10"

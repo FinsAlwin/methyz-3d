@@ -1,18 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import gltfModel from "../../models/Methiyadi_v17.gltf";
-import Box from "./Box";
 
 const Scene = (props) => {
   const boxRef = useRef();
 
-  useFrame(() => (boxRef.current.rotation.y += 0.001));
-
   const [ready, setReady] = useState(false);
   const [isObjectLoaded, setIsObjectLoaded] = useState(false);
 
-  const [clicked, setClicked] = useState("");
+  const [clicked, setClicked] = useState(false);
 
   const [color, setColor] = useState("#F8F9F9");
 
@@ -24,7 +20,17 @@ const Scene = (props) => {
   const [defaultColorStrapLH, setDefaultColorStrapLH] = useState("");
   const [defaultColorStrapRH, setDefaultColorStrapRH] = useState("");
 
-  const gltf = useLoader(GLTFLoader, gltfModel);
+  useFrame(() => {
+    if (!clicked) {
+      boxRef.current.rotation.y += 0.001;
+    }
+  });
+
+  const gltf = useLoader(GLTFLoader, props.model.model_url);
+
+  //  useEffect(() => {
+
+  //  })
 
   useEffect(() => {
     setDefaultColors();
@@ -148,6 +154,8 @@ const Scene = (props) => {
             e.stopPropagation();
             handleClick(e);
           }}
+          onPointerOver={(e) => setClicked(e.object.name)}
+          onPointerOut={(e) => setClicked()}
         >
           <primitive object={gltf.scene} />
         </mesh>

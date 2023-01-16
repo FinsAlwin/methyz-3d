@@ -77,6 +77,13 @@
   transition: all 0.2s ease 0s;
 }
 
+.sizeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+}
+
 @media (max-width: 767px) {
   .colorbxFixedContainer {
     display: none;

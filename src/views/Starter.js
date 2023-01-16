@@ -1,11 +1,12 @@
 import ThreeJs from "../components/ThreeJS";
-import ColorPicker from "../components/ColorPicker";
+import Selector from "../components/Selector";
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getItem } from "../Data";
+import { getproducts } from "../Data";
 import LoadingBar from "../components/loadingBar";
+import { ThreeDots, ProgressBar } from "react-loader-spinner";
 import "./starter.css";
 
 const Starter = () => {
@@ -14,6 +15,8 @@ const Starter = () => {
 
   const [item, setItem] = useState(false);
   const [isObjectLoaded, setIsObjectLoaded] = useState(false);
+
+  const [model, setModel] = useState("");
 
   let { product_id } = useParams();
 
@@ -49,32 +52,45 @@ const Starter = () => {
   };
 
   useEffect(() => {
-    setItem(filterById(getItem, product_id));
-  }, [item]);
+    fetch("https://methyztest.local/wp-json/mc/v1/init")
+      .then((response) => response.json())
+      .then((data) => setItem(data));
+  }, []);
 
   const handleObjectLoaded = (e) => {
     setIsObjectLoaded(e);
   };
 
+  const handleModel = (e) => {
+    setModel(filterBySlug(getproducts.products, e));
+  };
+
   return (
     <>
-      {product_id && item && (
+      {!item && (
+        <div style={{ width: "100%", height: "50vh", position: "relative" }}>
+          <LoadingBar loading={ProgressBar} />
+        </div>
+      )}
+      {item && (
         <Container fluid>
-          <div style={{ width: "100%", height: "50vh", position: "relative" }}>
-            {!isObjectLoaded && <LoadingBar />}
+          <div style={{ width: "100%", height: "60vh", position: "relative" }}>
+            {!isObjectLoaded && <LoadingBar loading={ThreeDots} />}
 
             <ThreeJs
               isActive={handleActivePart}
               data={item}
               handleObjectLoaded={handleObjectLoaded}
+              model={model}
             />
           </div>
 
-          <ColorPicker
+          <Selector
             partName={partName}
             active={active}
             objectData={objectData}
             data={item}
+            model={handleModel}
           />
         </Container>
       )}
@@ -84,8 +100,8 @@ const Starter = () => {
 
 export default Starter;
 
-function filterById(jsonObject, id) {
+function filterBySlug(jsonObject, slug) {
   return jsonObject.filter(function (jsonObject) {
-    return jsonObject["product_id"] == id;
+    return jsonObject["slug"] == slug;
   })[0];
 }
